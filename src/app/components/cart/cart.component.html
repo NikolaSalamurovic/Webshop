@@ -1,0 +1,17 @@
+<!--<a routerLink="/">Home</a>-->
+<app-header></app-header>
+<table *ngIf="hasRoute('/cart')">
+    <tr *ngFor="let item of savedObjects">
+        <div class="cart-container">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <img src={{item.imageUrl}} alt="" class="test">
+            <td class="price">{{item.price}}Kr</td>
+            <button 
+            (click)="deleteTask()"
+            >gsg</button>
+        </div>
+    </tr>
+</table>
+<p>total price:  </p>
+<button routerLink="/checkout">Checkout</button>
