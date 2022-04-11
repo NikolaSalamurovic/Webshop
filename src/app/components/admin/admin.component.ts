@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
 import { OrderAPI } from 'src/app/models/OrderAPI';
 import { OrderService } from 'src/app/services/order.service';
 
