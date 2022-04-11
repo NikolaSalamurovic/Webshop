@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Cart } from 'src/app/models/ICart';
 import { IMovies } from 'src/app/models/IMovies';
 import { ProductService } from 'src/app/services/products.service';
-import { HttpClient } from '@angular/common/http';
 import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
 

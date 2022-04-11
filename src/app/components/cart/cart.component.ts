@@ -5,8 +5,6 @@ import { CartProduct } from 'src/app/models/ICartProduct';
 import { OrderAPI } from 'src/app/models/OrderAPI';
 import { User } from 'src/app/models/IUser';
 import { OrderService } from 'src/app/services/order.service';
-import { IMovies } from 'src/app/models/IMovies';
-import { HttpClient } from '@angular/common/http';
 import { CartService } from 'src/app/services/cart.service';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 
