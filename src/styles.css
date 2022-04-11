@@ -3,7 +3,13 @@
     justify-content: space-around;
     border: 5px solid black;
     text-align: center;
-    width: 90%;
+    width: 20%;
+    position:fixed;
+    z-index: 999;
+    background-color: white;
+    top: 0;
+    right: 20%;
+
 }
 .container{
     display: flex;
@@ -15,6 +21,7 @@
     top: 30px;
     padding: 20px;
     border: 2px solid black;
+    width: 150vh;
 }
 .container2{
     display: flex;
@@ -31,4 +38,9 @@
     height: 40%;
     position: relative;
     top: 100px;
+}
+.formGroup{
+    padding-top: 30px;
+    border: 1px solid black;
+    width: 90vh;
 }

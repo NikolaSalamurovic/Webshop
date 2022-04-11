@@ -1,16 +1,10 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
-import { UsersService } from 'src/app/products.service';
+import { Component, OnInit } from '@angular/core';
+import { Cart } from 'src/app/models/ICart';
+import { IMovies } from 'src/app/models/IMovies';
+import { ProductService } from 'src/app/services/products.service';
+import { HttpClient } from '@angular/common/http';
+import { CartService } from 'src/app/services/cart.service';
 import { Router } from '@angular/router';
-
-  interface objectClass{
-    id:number;
-    name: string;
-    price: number;
-    amount: number;
-    productId: number;
-    imageUrl: string;
-    
-  }
 
 @Component({
   selector: 'app-products',
@@ -19,40 +13,27 @@ import { Router } from '@angular/router';
 })
   
 export class ProductsComponent implements OnInit {
-  
-  title = 'api-test';
-  data:any = [];
-  savedObjects:objectClass[] = [];
-  constructor(private user: UsersService, private router: Router){
-    this.user.getData().subscribe( data => {
-      console.warn(data);
-      this.data=data
+  movies: IMovies[] = [];
+
+  constructor(
+    private router: Router,
+    private item: ProductService,
+    private cartService: CartService
+  ){}
+
+  ngOnInit(): void {
+    this.item.getProducts().subscribe((data:IMovies[]) => {
+      this.movies = data
     })
-    if(localStorage.getItem('savedObject') && localStorage.getItem('savedObject')!.length > 0){
-        this.savedObjects = JSON.parse(localStorage.getItem('savedObject')??'');
-    }
-    
+  }
+
+  addToCart(movie:IMovies){
+    this.cartService.addToCart(movie);
   }
 
   hasRoute(route: string){
     return this.router.url === route;
   }
-  
 
-  ngOnInit(): void {
-  }
-  onClick(id: number) {
-    let foundObject = this.data.find(Object => Object.id === id)
-    this.savedObjects.push({...foundObject});
-    localStorage.setItem('savedObject',JSON.stringify(this.savedObjects));
-    let array: [] = JSON.parse(localStorage.getItem('savedObject')??'');
-    
-
-    //this.savedObjects.push({...foundObject,companyId:41});
-    //this.savedObjects.forEach(obj => obj = {...obj,companyId:41})
-    array.forEach((obj:{title:string})=> console.log(obj.title))
-    
-    
-  }
 
 }

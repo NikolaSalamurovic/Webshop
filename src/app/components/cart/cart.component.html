@@ -1,17 +1,28 @@
-<!--<a routerLink="/">Home</a>-->
-<app-header></app-header>
-<table *ngIf="hasRoute('/cart')">
-    <tr *ngFor="let item of savedObjects">
-        <div class="cart-container">
-            <td>{{item.id}}</td>
-            <td>{{item.name}}</td>
-            <img src={{item.imageUrl}} alt="" class="test">
-            <td class="price">{{item.price}}Kr</td>
-            <button 
-            (click)="deleteTask()"
-            >gsg</button>
+<div *ngIf="hasRoute('/cart')">
+    <app-header></app-header>
+    
+    <div *ngFor="let cartItem of cart.items">
+        <div>
+            <h1>{{cartItem.movie.name}}</h1>
+            <p>Amount: {{cartItem.quantity}}</p>
+            <p>Price: {{cartItem.movie.price}} SEK</p>
+            <img src="{{cartItem.movie.imageUrl}}" alt="{{cartItem.movie.name}}">
+            <button (click)="removeCartItem(cartItem)">Remove</button>
         </div>
-    </tr>
-</table>
-<p>total price:  </p>
-<button routerLink="/checkout">Checkout</button>
+    </div>
+
+    
+</div>
+    <form [formGroup]="userForm" (ngSubmit)="orderToAPI()" class="formGroup">
+        <div>
+            <label for="firstName"> Name:</label>
+            <input type="text" id="firstName" formControlName="firstName">
+        </div>
+        <div>
+            <label for="lastName">Surname:</label>
+            <input type="text" id="lastName" formControlName="lastName">
+        </div>
+
+        <button type="submit">Order</button>
+        <h2>Total Price: {{cart.priceSum}} SEK</h2>
+    </form>

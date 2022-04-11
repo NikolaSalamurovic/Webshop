@@ -1,1 +1,11 @@
-<app-header></app-header>
+
+<div *ngIf="hasRoute('/admin')">
+    <app-header></app-header>
+    <h1>Order list</h1>
+    <div class="box" *ngFor="let item of orderAPI">
+        <p>Order made by: {{item.createdBy}}</p>
+        <p>Time and date: {{item.created}}</p>
+        <p>Total Price: {{item.totalPrice}} SEK</p>
+        <button (click)="onDelete(item.id)">Remove</button>
+    </div>
+</div>

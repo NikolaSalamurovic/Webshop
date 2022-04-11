@@ -1,22 +1,18 @@
 <table *ngIf="hasRoute('/products')">
     <app-header></app-header>
-    <div>
-        <!--<a routerLink="/">Home</a>-->
-    </div>
     <tr class="container2">
         <td>#</td>
         <td>Title</td>
         <td></td>
         <td>Price</td>
     </tr>
-    <tr *ngFor="let item of data">
+    <div *ngFor="let item of movies">
         <div class="container">
-            <td>{{item.id}}</td>
             <td>{{item.name}}</td>
             <img src={{item.imageUrl}} alt="" class="test">
-            <td class="price">id{{item.description}}</td>
-            <td>{{item.price}}Kr</td>
-            <button class="btn" (click)="onClick(item.id)">KÖP</button>
+            <td class="price">{{item.description}}</td>
+            <td>{{item.price}}SEK</td>
+            <button class="btn" (click)="addToCart(item)">Add to Cart</button>
         </div>
-    </tr>
+    </div>
 </table>

@@ -8,16 +8,17 @@ import { HeaderComponent } from './components/header/header.component';
 import { ProductsComponent } from './components/products/products.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './components/cart/cart.component';
-import { ButtonComponent } from './components/button/button.component';
-import { CheckoutComponent } from './components/checkout/checkout.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HomeComponent } from './components/home/home.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const appRoutes: Routes = [
-  {path: '', component: HeaderComponent},
+  {path: '', component: HomeComponent},
   {path: 'cart', component: CartComponent},
   {path: 'products', component: ProductsComponent},
-  {path: 'checkout', component: CheckoutComponent},
-  {path: 'admin', component: AdminComponent}
+  {path: 'admin', component: AdminComponent},
+  {path: '**', component: NotFoundComponent}
 ]
 
 
@@ -28,15 +29,16 @@ const appRoutes: Routes = [
     ProductsComponent,
     ProductsComponent,
     CartComponent,
-    ButtonComponent,
-    CheckoutComponent,
-    AdminComponent
+    AdminComponent,
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, {enableTracing: true})
+    RouterModule.forRoot(appRoutes, {enableTracing: true}),
+    ReactiveFormsModule
     
   ],
   providers: [],
